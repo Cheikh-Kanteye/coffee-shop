@@ -1,36 +1,47 @@
 import { Dimensions } from "react-native";
 
-const { width, height } = Dimensions.get("window");
+export const { width, height } = Dimensions.get("window");
 
-const calculateFontSize = (baseFontSize: number) => {
+const makeResponsive = (baseFontSize: number) => {
   const scaleFactor = width / 320; // You can adjust this base width as needed
   return Math.round(baseFontSize * scaleFactor);
+};
+
+const SPACING = {
+  s: makeResponsive(8),
+  m: makeResponsive(16),
+  l: makeResponsive(24),
+  xl: makeResponsive(32),
 };
 
 const TYPOGRAPHY = {
   h1: {
     fontFamily: "Inter-Bold",
-    fontSize: calculateFontSize(32),
+    fontSize: makeResponsive(32),
   },
   h2: {
     fontFamily: "Inter-Bold",
-    fontSize: calculateFontSize(28),
+    fontSize: makeResponsive(28),
   },
   h3: {
-    fontFamily: "Inter-Medium",
-    fontSize: calculateFontSize(24),
+    fontFamily: "Inter-SemiBold",
+    fontSize: makeResponsive(24),
   },
   h4: {
-    fontFamily: "Inter-Medium",
-    fontSize: calculateFontSize(20),
+    fontFamily: "Inter-SemiBold",
+    fontSize: makeResponsive(20),
   },
   h5: {
     fontFamily: "Inter-Regular",
-    fontSize: calculateFontSize(16),
+    fontSize: makeResponsive(16),
   },
   h6: {
     fontFamily: "Inter-Regular",
-    fontSize: calculateFontSize(14),
+    fontSize: makeResponsive(14),
+  },
+  btn: {
+    fontFamily: "Inter-SemiBold",
+    fontSize: makeResponsive(14),
   },
 };
 
@@ -101,6 +112,7 @@ const COLORS = {
 const THEMES = {
   TYPOGRAPHY,
   COLORS,
+  SPACING,
 };
 
 export default THEMES;
